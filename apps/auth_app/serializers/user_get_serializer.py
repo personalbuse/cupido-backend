@@ -22,9 +22,6 @@ class UserGetSerializer(serializers.Serializer):
     tyc = serializers.BooleanField(allow_null=True)
     
     # Foreign key relations
-    programa_id = serializers.IntegerField(allow_null=True, source='programa.programa_id')
-    ubicacion_id = serializers.IntegerField(allow_null=True, source='ubicacion.ubicacion_id')
-    genero_id = serializers.IntegerField(allow_null=True, source='genero.genero_id')
 
 
 def serialize_user_profile(user: Usuario) -> dict:
@@ -44,7 +41,5 @@ def serialize_user_profile(user: Usuario) -> dict:
         "estadocuenta": user.estadocuenta,
         "tyc": user.tyc,
         "genero_id": user.genero.genero_id if user.genero else None,
-        "programa_id": user.programa.programa_id if user.programa else None,
-        "ubicacion_id": user.ubicacion.ubicacion_id if user.ubicacion else None,
     }
 
